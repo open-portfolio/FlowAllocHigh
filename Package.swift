@@ -16,8 +16,8 @@ let package = Package(
         .library(name: "FlowAllocHigh", targets: ["FlowAllocHigh"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/openalloc/FlowXCT.git", from: "1.1.0"),
-        .package(url: "https://github.com/openalloc/FlowAllocLow.git", from: "1.1.0"),
+        .package(url: "https://github.com/openalloc/FlowXCT.git", from: "1.0.0"),
+        .package(url: "https://github.com/openalloc/FlowAllocLow.git", from: "1.0.0"),
         .package(url: "https://github.com/reedes/SwiftPriorityQueue", from: "1.3.5"),
     ],
     targets: [
