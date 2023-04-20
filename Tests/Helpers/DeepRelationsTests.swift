@@ -12,9 +12,9 @@ import XCTest
 
 import SimpleTree
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
@@ -82,9 +82,9 @@ class DeepRelationsTests: XCTestCase {
         let filterACs = AssetKeySet([tm])
 
         let expected = [tm: [tm]]
-        
+
         let actual = Relations.getRawRankedTargetsMap(heldAssetKeySet: filterACs, targetAssetKeySet: filterACs, relatedTree: root)
-        
+
         XCTAssertEqual(expected, actual)
     }
 
@@ -97,7 +97,7 @@ class DeepRelationsTests: XCTestCase {
         ]
 
         let actual = Relations.getRawRankedTargetsMap(heldAssetKeySet: filterACs, targetAssetKeySet: filterACs, relatedTree: root)
-        
+
         XCTAssertEqual(expected, actual)
     }
 
@@ -108,7 +108,7 @@ class DeepRelationsTests: XCTestCase {
                         tm: [tm, scv]]
 
         let actual = Relations.getRawRankedTargetsMap(heldAssetKeySet: filterACs, targetAssetKeySet: filterACs, relatedTree: root)
-        
+
         XCTAssertEqual(expected, actual)
     }
 
@@ -120,7 +120,7 @@ class DeepRelationsTests: XCTestCase {
                         scv: [scv, sc]]
 
         let actual = Relations.getRawRankedTargetsMap(heldAssetKeySet: filterACs, targetAssetKeySet: filterACs, relatedTree: root)
-        
+
         XCTAssertEqual(expected, actual)
     }
 
@@ -129,9 +129,9 @@ class DeepRelationsTests: XCTestCase {
 
         let expected = [scv: [scv],
                         mc: [mc]]
-        
+
         let actual = Relations.getRawRankedTargetsMap(heldAssetKeySet: filterACs, targetAssetKeySet: filterACs, relatedTree: root)
-        
+
         XCTAssertEqual(expected, actual)
     }
 }

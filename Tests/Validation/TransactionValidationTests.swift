@@ -11,9 +11,9 @@
 import Foundation
 import XCTest
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
@@ -31,7 +31,7 @@ class TransactionValidationTests: XCTestCase {
         timestamp3 = df.date(from: "2020-12-01T00:00:00Z")!
         timestampX = df.date(from: "2020-02-30T00:00:00Z")! // fake!
     }
-    
+
     // no validation yet for history items
     func testInvalidDateDoesNotFail() throws {
         let txn = MTransaction(action: .buysell, transactedAt: timestampX, accountID: "1", securityID: "XOM", shareCount: 1, sharePrice: 1)

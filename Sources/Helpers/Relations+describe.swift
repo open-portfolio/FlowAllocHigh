@@ -10,8 +10,8 @@
 
 import Foundation
 
-import SimpleTree
 import AllocData
+import SimpleTree
 
 import FlowAllocLow
 import FlowBase

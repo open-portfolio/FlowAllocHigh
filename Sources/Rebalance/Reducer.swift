@@ -13,7 +13,6 @@ import Foundation
 import FlowAllocLow
 import FlowBase
 
-
 public struct ReducerPair: Hashable {
     public var left: AssetKey // adding during apply
     public var right: AssetKey // subtracting during apply

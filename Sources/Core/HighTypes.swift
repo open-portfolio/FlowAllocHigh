@@ -12,10 +12,9 @@ import Foundation
 
 import SimpleTree
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
-
 
 public typealias AccountAssetAmountMap = [AccountKey: AssetValueMap]
 public typealias AccountAssetHoldingsMap = [AccountKey: AssetHoldingsMap]

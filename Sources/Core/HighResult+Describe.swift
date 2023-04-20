@@ -23,13 +23,13 @@ extension HighResult: CustomDebugStringConvertible {
     public var debugDescription: String {
         var buffer = [String]()
         buffer.append("FlowMode: \(flowMode.format3())")
-        //buffer.append("AccountKeys: \(accountKeys.joined(separator: ", "))")
-        //buffer.append("AssetKeys: \(assetKeys.joined(separator: ", "))")
+        // buffer.append("AccountKeys: \(accountKeys.joined(separator: ", "))")
+        // buffer.append("AssetKeys: \(assetKeys.joined(separator: ", "))")
         buffer.append("Taxable Gains: \(netTaxGains.currency0())")
         buffer.append("Volume: \(saleVolume.currency0())")
-        //buffer.append("AccountAllocMap: \(AssetValue.describe(accountAllocMap, style: .percent1, separator: "\n\t"))")
-        //buffer.append("AccountRebalanceMap: \(AssetValue.describe(accountRebalanceMap, style: .currency0, separator: "\n\t"))")
-        //buffer.append("AccountReducerMap: \(ReducerPair.describe(accountReducerMap, separator: "\n\t"))")
+        // buffer.append("AccountAllocMap: \(AssetValue.describe(accountAllocMap, style: .percent1, separator: "\n\t"))")
+        // buffer.append("AccountRebalanceMap: \(AssetValue.describe(accountRebalanceMap, style: .currency0, separator: "\n\t"))")
+        // buffer.append("AccountReducerMap: \(ReducerPair.describe(accountReducerMap, separator: "\n\t"))")
         return buffer.joined(separator: "\n")
     }
 }

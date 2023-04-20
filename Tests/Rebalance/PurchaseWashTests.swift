@@ -14,9 +14,9 @@ import XCTest
 
 import SimpleTree
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
@@ -32,7 +32,7 @@ class PurchaseWashTests: XCTestCase {
         timestamp2 = df.date(from: "2020-11-01T00:00:00Z")!
         timestamp3 = df.date(from: "2020-12-01T00:00:00Z")!
     }
-    
+
     func testAmountOnPotentialWash() throws {
         let assetTxnsMap = [
             MAsset.Key(assetID: "LC"): [

@@ -32,7 +32,7 @@ public extension MTransaction {
     }
 }
 
-extension MTransaction {    
+extension MTransaction {
     static func getAssetTxnsMap(_ txns: [MTransaction], _ securityMap: SecurityMap) -> AssetTxnsMap {
         txns.reduce(into: [:]) { map, txn in
             guard let assetKey = securityMap[txn.securityKey]?.assetKey
@@ -65,16 +65,17 @@ extension MTransaction {
         recentSellTxns.reduce(into: [:]) { map, txn in
             guard txn.isSell else { return } // ensure it's a sale
             guard txn.securityKey.isValid else { return } // consider only well-formed security keys
-            
+
             // if account is known, and known to be non-taxable, exclude it from results
             if let account = accountMap[txn.accountKey],
-               !account.isTaxable {
+               !account.isTaxable
+            {
                 return
             }
-            
+
             let netGain = (txn.realizedGainShort ?? 0) + (txn.realizedGainLong ?? 0)
             guard netGain != 0 else { return }
-            
+
             map[txn.securityKey, default: 0] += netGain
         }
     }

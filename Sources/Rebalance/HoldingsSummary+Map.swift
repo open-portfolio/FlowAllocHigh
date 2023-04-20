@@ -15,9 +15,7 @@ import AllocData
 import FlowAllocLow
 import FlowBase
 
-
 public extension HoldingsSummary {
-    
     // TODO: may need tests
     static func getAccountAssetHoldingsSummaryMap(_ assetHoldingsMap: AssetHoldingsMap,
                                                   _ securityMap: SecurityMap) -> AccountAssetHoldingsSummaryMap
@@ -53,12 +51,10 @@ public extension HoldingsSummary {
     static func getAssetHoldingsSummaryMap(_ assetHoldingsMap: AssetHoldingsMap,
                                            _ securityMap: SecurityMap) -> AssetHoldingsSummaryMap
     {
-        let tuples: [(AssetKey, HoldingsSummary)] = {
-            assetHoldingsMap.map { assetKey, holdings in
-                let summary = HoldingsSummary.getSummary(holdings, securityMap)
-                return (assetKey, summary)
-            }
-        }()
+        let tuples: [(AssetKey, HoldingsSummary)] = assetHoldingsMap.map { assetKey, holdings in
+            let summary = HoldingsSummary.getSummary(holdings, securityMap)
+            return (assetKey, summary)
+        }
         return Dictionary(uniqueKeysWithValues: tuples)
     }
 }

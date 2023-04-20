@@ -10,43 +10,42 @@
 
 import XCTest
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
 class AssetValueTests: XCTestCase {
-    
-    let acfoo   = MAsset(assetID: "foo")
-    let acbar   = MAsset(assetID: "bar")
-    let acbaz   = MAsset(assetID: "baz")
-    let acblah  = MAsset(assetID: "blah")
+    let acfoo = MAsset(assetID: "foo")
+    let acbar = MAsset(assetID: "bar")
+    let acbaz = MAsset(assetID: "baz")
+    let acblah = MAsset(assetID: "blah")
     let acbleep = MAsset(assetID: "bleep")
     let acblort = MAsset(assetID: "blort")
-    let acblap  = MAsset(assetID: "blap")
+    let acblap = MAsset(assetID: "blap")
 
     let account1 = MAccount.Key(accountID: "1")
     let account2 = MAccount.Key(accountID: "2")
-    
-    let foo   = MAsset.Key(assetID: "foo")
-    let bar   = MAsset.Key(assetID: "bar")
-    let baz   = MAsset.Key(assetID: "baz")
-    let blah  = MAsset.Key(assetID: "blah")
+
+    let foo = MAsset.Key(assetID: "foo")
+    let bar = MAsset.Key(assetID: "bar")
+    let baz = MAsset.Key(assetID: "baz")
+    let blah = MAsset.Key(assetID: "blah")
     let bleep = MAsset.Key(assetID: "bleep")
     let blort = MAsset.Key(assetID: "blort")
-    let blap  = MAsset.Key(assetID: "blap")
+    let blap = MAsset.Key(assetID: "blap")
 
     func testNormalization() throws {
         let foo = acfoo.primaryKey
         let bar = acbar.primaryKey
         let baz = acbaz.primaryKey
         let blah = acblah.primaryKey
-        
+
         let rawMap: [AssetKey: Double] = [
-            foo : 100,
-            bar : 300,
-            baz : 400,
+            foo: 100,
+            bar: 300,
+            baz: 400,
             blah: 0,
         ]
 
@@ -56,7 +55,6 @@ class AssetValueTests: XCTestCase {
     }
 
     func testGetAccountAssetValueMap() throws {
-        
         let aaMap: AccountAssetValueMap = [
             account1: [
                 foo: 100,

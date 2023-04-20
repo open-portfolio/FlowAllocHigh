@@ -14,7 +14,6 @@ import SimpleTree
 import FlowAllocLow
 import FlowBase
 
-
 // simplify an asset allocation by 'rolling up' thinner slices into thicker ones
 // NOTE: does not normalize or validate the allocation map. You may wish to do this separately.
 public func rollup(_ relatedTree: AssetKeyTree,

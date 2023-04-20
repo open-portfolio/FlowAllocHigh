@@ -12,9 +12,9 @@ import XCTest
 
 import SimpleTree
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
@@ -89,10 +89,10 @@ class FixedAllocationTests1: XCTestCase {
     let spy = MSecurity.Key(securityID: "SPY")
     let voo = MSecurity.Key(securityID: "VOO")
     let vv = MSecurity.Key(securityID: "VV")
-    
+
     let lc = MAsset.Key(assetID: "LC")
     let bond = MAsset.Key(assetID: "Bond")
-    
+
     let account1 = MAccount.Key(accountID: "1")
     let account2 = MAccount.Key(accountID: "2")
 

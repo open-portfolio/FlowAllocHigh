@@ -15,7 +15,6 @@ import AllocData
 import FlowAllocLow
 import FlowBase
 
-
 public extension Sale {
     static func getNetGainLossSum(_: HighContext, _ sales: [Sale]) -> Double {
         sales.reduce(0) { $0 + $1.netGainLoss }

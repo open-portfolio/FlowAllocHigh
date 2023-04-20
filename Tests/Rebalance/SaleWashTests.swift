@@ -14,19 +14,18 @@ import XCTest
 
 import SimpleTree
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
 class SaleWashTests: XCTestCase {
-    
     let bnd = MSecurity.Key(securityID: "BND")
     let spy = MSecurity.Key(securityID: "SPY")
     let voo = MSecurity.Key(securityID: "VOO")
     let xlk = MSecurity.Key(securityID: "XLK")
-    
+
     let lc = MAsset.Key(assetID: "LC")
 
     func testGetWashAmount() throws {

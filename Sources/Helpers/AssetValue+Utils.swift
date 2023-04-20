@@ -15,7 +15,6 @@ import AllocData
 import FlowAllocLow
 import FlowBase
 
-
 public extension AssetValue {
     static func distribute(value: Double, allocationMap: AssetValueMap, includeZero: Bool = false) -> AssetValueMap {
         allocationMap.reduce(into: [:]) { map, entry in

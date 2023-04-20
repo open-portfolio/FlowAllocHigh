@@ -23,7 +23,7 @@ func allocateFixed(accounts: [MAccount],
                    topRankedTargetMap: ClosestTargetMap,
                    epsilon: Double = 0.0001) -> FixedAllocationMapPair
 {
-    //print(AssetValue.describe(fixedNetContribMap, prefix: "fixedNetContribMap", style: .currency2))
+    // print(AssetValue.describe(fixedNetContribMap, prefix: "fixedNetContribMap", style: .currency2))
 
     var remainingAmountsMap = fixedNetContribMap // remaining to allocate among asset classes in fixed accounts
     var accountAllocatedMap = AccountAssetAmountMap()
@@ -56,7 +56,7 @@ func allocateFixed(accounts: [MAccount],
             let nuAllocated = min(holdingPV, remainingPV)
 
             // NOTE including the following line may cause StrategyCells to be omitted from non-trading accounts
-            //guard nuAllocated.isGreater(than: 0, accuracy: epsilon) else { continue }
+            // guard nuAllocated.isGreater(than: 0, accuracy: epsilon) else { continue }
 
             // it's okay to have unallocated account (that's active) where we don't show any data
             allocatedMap[netAssetKey, default: 0] += nuAllocated
@@ -70,7 +70,7 @@ func allocateFixed(accounts: [MAccount],
         }
     }
 
-    //print(AssetValue.describe(accountAllocatedMap, prefix: "accountAllocatedMap", style: .currency2))
+    // print(AssetValue.describe(accountAllocatedMap, prefix: "accountAllocatedMap", style: .currency2))
 
     return (allocated: accountAllocatedMap, orphans: accountOrphanedMap)
 }

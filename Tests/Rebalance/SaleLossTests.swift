@@ -14,17 +14,16 @@ import XCTest
 
 import SimpleTree
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
 class SaleRealizingLossTests: XCTestCase {
-    
     let bnd = MSecurity.Key(securityID: "BND")
     let spy = MSecurity.Key(securityID: "SPY")
-    
+
     func testGetGainLossMap() throws {
         let spyHolding1 = MHolding(accountID: "1", securityID: "SPY", lotID: "", shareCount: 1, shareBasis: 2)
         let spyHolding2 = MHolding(accountID: "1", securityID: "SPY", lotID: "", shareCount: 1, shareBasis: 2)

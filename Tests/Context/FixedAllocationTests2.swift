@@ -12,9 +12,9 @@ import XCTest
 
 import SimpleTree
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 import FlowXCT
 
 @testable import FlowAllocHigh
@@ -188,9 +188,9 @@ class FixedAllocationTests2: XCTestCase {
         let targetACs = Set(targetAlloc.keys)
 
         let rankedTargetsMap = Relations.getRawRankedTargetsMap(heldAssetKeySet: Set(fixedACs), targetAssetKeySet: targetACs, relatedTree: relatedTree)
-        
+
         let actual = Relations.getTopRankedTargetMap(rankedTargetsMap: rankedTargetsMap)
-        
+
         let expected: [AssetKey: AssetKey] = [
             acBonds: acTIT,
             acEM: acIntl,
@@ -210,7 +210,7 @@ class FixedAllocationTests2: XCTestCase {
         let rankedTargetsMap = Relations.getRawRankedTargetsMap(heldAssetKeySet: Set(fixedACs), targetAssetKeySet: targetACs, relatedTree: relatedTree)
         let topRankedMap = Relations.getTopRankedTargetMap(rankedTargetsMap: rankedTargetsMap)
         let result = Relations.getDistilledMap(fixedHoldingsRaw, topRankedTargetMap: topRankedMap, securityMap: securityMap)
-        
+
         let actual = Set(result.accepted.map(\.key))
 
         let expected = Set([

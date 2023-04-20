@@ -13,9 +13,9 @@ import XCTest
 
 import AllocData
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
@@ -31,7 +31,7 @@ class TransactionImportTests: XCTestCase {
         timestamp2 = df.date(from: "2020-11-01T00:00:00Z")!
         timestamp3 = df.date(from: "2020-12-01T00:00:00Z")!
     }
-    
+
     func testValidHistorySucceeds() throws {
         let accountA = MAccount(accountID: "1", title: "A")
         let asset = MAsset(assetID: "a", title: "a")

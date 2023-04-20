@@ -73,7 +73,7 @@ func getNetCombinedTotal(fixedValueMap: AssetValueMap,
     let fixedTotal = fixedValueMap.reduce(0.0) { $0 + $1.value }
     let combinedTotal = fixedTotal + variableContribTotal
 
-    //print("getNetCombinedTotal combinedRawTotal=\(combinedTotal.currency0()) variableContrib=\(variableContribTotal.currency0())")
+    // print("getNetCombinedTotal combinedRawTotal=\(combinedTotal.currency0()) variableContrib=\(variableContribTotal.currency0())")
 
     // starting at top of variable, keep increasing until contributions levels off, or we reach the raw combined limit
     var totalContrib = variableContribTotal
@@ -86,7 +86,7 @@ func getNetCombinedTotal(fixedValueMap: AssetValueMap,
                                               combinedTotal: totalContrib,
                                               netAllocMap: netAllocMap)
 
-        //print("getNetCombinedTotal: fixedContrib=\(fixedContrib.currency0()) totalContrib=\(totalContrib.currency0()) count=\(count)")
+        // print("getNetCombinedTotal: fixedContrib=\(fixedContrib.currency0()) totalContrib=\(totalContrib.currency0()) count=\(count)")
 
         if abs(fixedContrib - lastFixedContrib) < precision {
             break

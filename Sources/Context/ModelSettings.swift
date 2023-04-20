@@ -10,9 +10,8 @@
 
 import Foundation
 
-import FlowBase
 import AllocData
-
+import FlowBase
 
 // settings usually requiring a context-reset
 // shouldn't include navigation-oriented settings, such as tab selection or navigation state

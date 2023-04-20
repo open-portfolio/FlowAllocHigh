@@ -13,7 +13,6 @@ import Foundation
 import FlowAllocLow
 import FlowBase
 
-
 public struct HighResult: Hashable, Identifiable {
     public var id: Int { hashValue }
     public let accountKeys: [AccountKey]
@@ -61,7 +60,7 @@ public struct HighResult: Hashable, Identifiable {
 
     /**
      Note: hash order IS SIGNIFICANT
-     
+
      var hasherB = Hasher()
      hasherB.combine(23)
      hasherB.combine("Hello")
@@ -79,7 +78,7 @@ public struct HighResult: Hashable, Identifiable {
         hasher.combine(volumeDollars)
         hasher.combine(washAmountDollars)
     }
-    
+
     public func getBaseParams(isStrict: Bool, fixedAccountKeys: [AccountKey]) -> BaseParams {
         BaseParams(accountKeys: accountKeys,
                    assetKeys: assetKeys,

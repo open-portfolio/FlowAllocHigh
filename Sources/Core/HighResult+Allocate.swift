@@ -16,8 +16,8 @@ import SimpleTree
 import FlowAllocLow
 import FlowBase
 
-//@available(macOS 11.0, iOS 14.0, *)
-//let slog = Logger(subsystem: "app.flowallocator", category: "Summarize")
+// @available(macOS 11.0, iOS 14.0, *)
+// let slog = Logger(subsystem: "app.flowallocator", category: "Summarize")
 
 extension HighResult {
     public static func allocateRebalanceSummarize(_ ax: HighContext,
@@ -63,7 +63,6 @@ extension HighResult {
     }
 
     internal static func allocate(_ ax: HighContext, _ ap: BaseParams) throws -> AccountAssetValueMap {
-
         let allocMap = AssetValue.getAssetValueMap(from: ax.allocatingAllocs)
 
         // TODO: may benefit from further optimization
@@ -102,7 +101,7 @@ extension HighResult {
                                    accountRebalanceMap: AccountRebalanceMap,
                                    accountReducerMap: AccountReducerMap) -> HighResult
     {
-        var transactionCount: Int = 0
+        var transactionCount = 0
         var netTaxGains: Double = 0
         var absTaxGains: Double = 0
         var saleVolume: Double = 0
@@ -147,15 +146,15 @@ extension HighResult {
         }
 
         return HighResult(accountKeys: ap.accountKeys,
-                           assetKeys: ap.assetKeys,
-                           flowMode: ap.flowMode,
-                           accountAllocMap: accountAllocMap,
-                           accountRebalanceMap: accountRebalanceMap,
-                           accountReducerMap: accountReducerMap,
-                           transactionCount: transactionCount,
-                           netTaxGains: netTaxGains,
-                           absTaxGains: absTaxGains,
-                           saleVolume: saleVolume,
-                           washAmount: saleWashAmount)
+                          assetKeys: ap.assetKeys,
+                          flowMode: ap.flowMode,
+                          accountAllocMap: accountAllocMap,
+                          accountRebalanceMap: accountRebalanceMap,
+                          accountReducerMap: accountReducerMap,
+                          transactionCount: transactionCount,
+                          netTaxGains: netTaxGains,
+                          absTaxGains: absTaxGains,
+                          saleVolume: saleVolume,
+                          washAmount: saleWashAmount)
     }
 }

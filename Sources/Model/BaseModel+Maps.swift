@@ -15,9 +15,7 @@ import AllocData
 import FlowAllocLow
 import FlowBase
 
-
 public extension BaseModel {
-    
     var trackerSecuritiesMap: TrackerSecuritiesMap {
         MTracker.getTrackerSecuritiesMap(securities)
     }

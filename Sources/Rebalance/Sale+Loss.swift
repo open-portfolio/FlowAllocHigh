@@ -10,9 +10,9 @@
 
 import Foundation
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 public extension Sale {
     // Summarize the gainLoss of the specified sales by securityID

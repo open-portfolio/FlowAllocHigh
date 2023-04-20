@@ -8,14 +8,13 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-
 import Foundation
 
 import XCTest
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 import FlowXCT
 
 @testable import FlowAllocHigh

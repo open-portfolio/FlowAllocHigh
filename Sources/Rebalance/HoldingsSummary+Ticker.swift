@@ -15,7 +15,6 @@ import AllocData
 import FlowAllocLow
 import FlowBase
 
-
 public extension HoldingsSummary {
     // recent purchases in this account for this asset class
     static func getCurrentlyHolding(_ ax: HighContext, accountKey: AccountKey, assetKey: AssetKey) -> TickerHoldingsSummaryMap {

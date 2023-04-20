@@ -10,10 +10,9 @@
 
 import Foundation
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
-
 
 public struct PurchaseInfo: Equatable {
     public let tickerKey: SecurityKey

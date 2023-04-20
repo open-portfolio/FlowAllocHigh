@@ -27,22 +27,22 @@ public struct DistinctLimitedPriorityQueue<T: Hashable & Comparable & Equatable>
     }
 
     // push, ignoring duplicates (via the set)
-    mutating public func push(_ element: T) {
+    public mutating func push(_ element: T) {
         if set.contains(element) {
-            //print("\(name) IGNORE=\(element.hashValue) set=\(set.count)")
+            // print("\(name) IGNORE=\(element.hashValue) set=\(set.count)")
             return
         }
 
         let originalCount = pq.count
 
         if let discard = pq.push(element, maxHeap: maxHeap) {
-            //print("\(name) DISCARD: REMOVE=\(discard.hashValue) INSERT=\(element.hashValue) set=\(set.count) pq=\(pq.count)")
+            // print("\(name) DISCARD: REMOVE=\(discard.hashValue) INSERT=\(element.hashValue) set=\(set.count) pq=\(pq.count)")
             set.remove(discard)
             set.insert(element)
         } else if pq.count > originalCount {
             // Detect if item was actually pushed to queue, and if so, track it in set.
             // Catches case of where the queue is filling from empty and there's nothing to discard.
-            //print("\(name) INSERT=\(element.hashValue) set=\(set.count) pq=\(pq.count)")
+            // print("\(name) INSERT=\(element.hashValue) set=\(set.count) pq=\(pq.count)")
             set.insert(element)
         }
 
@@ -50,7 +50,7 @@ public struct DistinctLimitedPriorityQueue<T: Hashable & Comparable & Equatable>
         assert(set.count == pq.count)
     }
 
-    mutating public func clear(newOrder: ((T, T) -> Bool)? = nil) {
+    public mutating func clear(newOrder: ((T, T) -> Bool)? = nil) {
         pq.clear(newOrder: newOrder)
         set.removeAll()
     }

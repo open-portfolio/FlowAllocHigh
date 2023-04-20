@@ -14,9 +14,9 @@ import XCTest
 
 import SimpleTree
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
@@ -29,7 +29,7 @@ class SaleRecentlyRealizedLossWashTests: XCTestCase {
     let spy = MSecurity.Key(securityID: "SPY")
     let voo = MSecurity.Key(securityID: "VOO")
     let vv = MSecurity.Key(securityID: "VV")
-    
+
     let lc = MAsset.Key(assetID: "LC")
 
     override func setUpWithError() throws {

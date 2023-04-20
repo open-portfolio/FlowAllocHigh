@@ -12,18 +12,18 @@ import XCTest
 
 import SimpleTree
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
 class HoldingsSummaryRollupTests: XCTestCase {
-    let acLCBlend  = MAsset.Key(assetID: "LC Blend")
+    let acLCBlend = MAsset.Key(assetID: "LC Blend")
     let acLCGrowth = MAsset.Key(assetID: "LC Growth")
     let acSmallCap = MAsset.Key(assetID: "Small Cap")
     let acSCGrowth = MAsset.Key(assetID: "SC Growth")
-    let acSCValue  = MAsset.Key(assetID: "SC Value")
+    let acSCValue = MAsset.Key(assetID: "SC Value")
     let acMicrocap = MAsset.Key(assetID: "Microcap")
 
     let account1 = MAccount.Key(accountID: "1")
@@ -72,7 +72,7 @@ class HoldingsSummaryRollupTests: XCTestCase {
 
         let expected: AccountAssetHoldingsSummaryMap = [
             account1: [acSmallCap: HoldingsSummary(presentValue: 17, costBasis: 19, count: 23),
-                  acLCBlend: HoldingsSummary(presentValue: 1 + 7, costBasis: 3 + 11, count: 5 + 13)],
+                       acLCBlend: HoldingsSummary(presentValue: 1 + 7, costBasis: 3 + 11, count: 5 + 13)],
             account2: [acSmallCap: HoldingsSummary(presentValue: 29 + 41 + 51, costBasis: 31 + 43 + 53, count: 37 + 47 + 57)],
         ]
         HoldingsSummary.rollup(&accountSummaryMap, rollupMap)

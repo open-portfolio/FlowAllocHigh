@@ -12,9 +12,9 @@ import XCTest
 
 import SimpleTree
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
@@ -23,23 +23,23 @@ class RollupTests: XCTestCase {
     let acBar = MAsset.Key(assetID: "bar")
     let acBaz = MAsset.Key(assetID: "baz")
     let acBlah = MAsset.Key(assetID: "blah")
-    let acLCBlend  = MAsset.Key(assetID: "LC Blend")
-    let acLCValue  = MAsset.Key(assetID: "LC Value")
+    let acLCBlend = MAsset.Key(assetID: "LC Blend")
+    let acLCValue = MAsset.Key(assetID: "LC Value")
     let acLCGrowth = MAsset.Key(assetID: "LC Growth")
     let acSmallCap = MAsset.Key(assetID: "Small Cap")
     let acSCGrowth = MAsset.Key(assetID: "SC Growth")
-    let acSCValue  = MAsset.Key(assetID: "SC Value")
+    let acSCValue = MAsset.Key(assetID: "SC Value")
     let acMicrocap = MAsset.Key(assetID: "Microcap")
-    let acGold     = MAsset.Key(assetID: "Gold")
-    let acROOT     = MAsset.Key(assetID: "ROOT")
-    let acBond     = MAsset.Key(assetID: "Bond")
-    let acIntl     = MAsset.Key(assetID: "Intl")
-    let acLC     = MAsset.Key(assetID: "LC")
-    let acLCVal     = MAsset.Key(assetID: "LCVal")
-    let acSC     = MAsset.Key(assetID: "SC")
-    let acSCVal     = MAsset.Key(assetID: "SCVal")
-    let acRE     = MAsset.Key(assetID: "RE")
-    
+    let acGold = MAsset.Key(assetID: "Gold")
+    let acROOT = MAsset.Key(assetID: "ROOT")
+    let acBond = MAsset.Key(assetID: "Bond")
+    let acIntl = MAsset.Key(assetID: "Intl")
+    let acLC = MAsset.Key(assetID: "LC")
+    let acLCVal = MAsset.Key(assetID: "LCVal")
+    let acSC = MAsset.Key(assetID: "SC")
+    let acSCVal = MAsset.Key(assetID: "SCVal")
+    let acRE = MAsset.Key(assetID: "RE")
+
     func testScrubSlices() throws {
         let slices = [acFoo: 1.0001000002]
 

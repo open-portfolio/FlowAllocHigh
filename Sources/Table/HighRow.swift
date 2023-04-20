@@ -13,7 +13,6 @@ import Foundation
 import FlowAllocLow
 import FlowBase
 
-
 public final class HighRow: BaseRow {
     public var netAlloc: AssetValue
     public var fixedCells: [HighFixedItem]

@@ -15,7 +15,6 @@ import AllocData
 import FlowAllocLow
 import FlowBase
 
-
 public extension MAccount {
     static func getHoldingsPresentValue(_ accountKey: AccountKey, _ accountPresentValueMap: AccountPresentValueMap) -> Double {
         accountPresentValueMap[accountKey] ?? 0

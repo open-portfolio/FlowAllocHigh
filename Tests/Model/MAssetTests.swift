@@ -10,14 +10,13 @@
 
 import XCTest
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
 class MAssetTests: XCTestCase {
-    
     let a = MAsset.Key(assetID: "a")
     let b = MAsset.Key(assetID: "b")
     let c = MAsset.Key(assetID: "c")

@@ -13,7 +13,6 @@ import Foundation
 import FlowAllocLow
 import FlowBase
 
-
 public extension HighResult {
     func getSaleMap(_ ax: HighContext, accountKey: AccountKey) -> SaleMap {
         guard let rebalanceMap = accountRebalanceMap[accountKey],
@@ -24,7 +23,7 @@ public extension HighResult {
                                minimumPositionValue: Double(ax.settings.minimumPositionValue))
     }
 
-    // TODO may need tests
+    // TODO: may need tests
     func getAccountSalesMap(_ ax: HighContext) -> AccountSalesMap {
         accountKeys.reduce(into: [:]) { map, accountKey in
             guard let rebalanceMap = self.accountRebalanceMap[accountKey],
@@ -39,13 +38,13 @@ public extension HighResult {
         }
     }
 
-    func getPurchaseMap(_ ax: HighContext, accountKey: AccountKey) -> PurchaseMap {
+    func getPurchaseMap(_: HighContext, accountKey: AccountKey) -> PurchaseMap {
         guard let rebalanceMap = accountRebalanceMap[accountKey]
         else { return [:] }
         return Purchase.getPurchaseMap(rebalanceMap: rebalanceMap)
     }
 
-    func getAccountPurchasesMap(_ ax: HighContext) -> AccountPurchasesMap {
+    func getAccountPurchasesMap(_: HighContext) -> AccountPurchasesMap {
         accountKeys.reduce(into: [:]) { map, accountKey in
             guard let rebalanceMap = self.accountRebalanceMap[accountKey]
             else { return }

@@ -10,14 +10,13 @@
 
 import Foundation
 
-import SimpleTree
 import AllocData
+import SimpleTree
 
 import FlowAllocLow
 import FlowBase
 
 public extension Relations {
-    
     /// map each 'held' asset key to its top-ranked 'target' asset key
     static func getTopRankedTargetMap(rankedTargetsMap: DeepRelationsMap) -> ClosestTargetMap {
         rankedTargetsMap.reduce(into: [:]) { map, entry in
@@ -26,7 +25,7 @@ public extension Relations {
             map[holdingAssetKey] = topTarget
         }
     }
-    
+
     /// map the held asset keys (value) to their top-ranked target asset key (key)
     // This inverts the topRankedTargetMap dictionary
     //  [topRankedTargetAssetKey: heldAssetKeys]
@@ -38,21 +37,22 @@ public extension Relations {
     // NOTE there may be overlap in the held assetKeys, as this is a raw translation of the relatedTree.
     // Starts with self, then nearest parent, grandparent, and so on until root. Then children, in a breadth-first traversal.
     static func getRawRankedTargetsMap(heldAssetKeySet: AssetKeySet,
-                                              targetAssetKeySet: AssetKeySet,
-                                              relatedTree: AssetKeyTree) -> DeepRelationsMap
+                                       targetAssetKeySet: AssetKeySet,
+                                       relatedTree: AssetKeyTree) -> DeepRelationsMap
     {
         heldAssetKeySet.reduce(into: [:]) { map, heldAssetKey in
             let buffer = getRawRelated(assetKey: heldAssetKey, relatedTree: relatedTree)
-            let filtered = buffer.filter { targetAssetKeySet.contains($0) } //&& heldAssetKey != $0 }
+            let filtered = buffer.filter { targetAssetKeySet.contains($0) } // && heldAssetKey != $0 }
             guard filtered.count > 0 else { return }
             map[heldAssetKey] = filtered
         }
     }
-        
+
     /// map each 'target' asset key to sorted list of 'held' asset keys
     static func getRawRelatedHeldMap(heldAssetKeySet: AssetKeySet,
-                                            targetAssetKeySet: AssetKeySet,
-                                            relatedTree: AssetKeyTree) -> DeepRelationsMap {
+                                     targetAssetKeySet: AssetKeySet,
+                                     relatedTree: AssetKeyTree) -> DeepRelationsMap
+    {
         targetAssetKeySet.reduce(into: [:]) { map, targetAssetKey in
             let buffer = getRawRelated(assetKey: targetAssetKey, relatedTree: relatedTree)
             let filtered = buffer.filter { heldAssetKeySet.contains($0) }
@@ -60,7 +60,7 @@ public extension Relations {
             map[targetAssetKey] = filtered.sorted()
         }
     }
-    
+
     private static func getRawRelated(assetKey: AssetKey, relatedTree: AssetKeyTree) -> [AssetKey] {
         var buffer = [assetKey]
         if let node = relatedTree.getFirst(for: assetKey) {
@@ -75,23 +75,23 @@ public extension Relations {
         }
         return buffer
     }
-    
+
     // Given an arbitrary set of holdings (across accounts), filter out those which cannot fit within the target asset classes.
     // Keys of resulting map are the closest related asset class for each of the holdings.
     // NOTE that unused holdings are not returned. That must be resolved in the rebalance.
     static func getDistilledMap(_ holdings: [MHolding],
-                                       topRankedTargetMap: ClosestTargetMap, // nearest targetACs, if any
-                                       securityMap: SecurityMap) -> DistillationResult
+                                topRankedTargetMap: ClosestTargetMap, // nearest targetACs, if any
+                                securityMap: SecurityMap) -> DistillationResult
     {
         // .sorted(by: { $0.getGainLoss(securityMap) ?? 0 < $1.getGainLoss(securityMap) ?? 0 })
         holdings.reduce(into: (accepted: [:], rejected: [:])) { map, holding in
-            
+
             guard holding.securityKey.isValid,
                   let security = securityMap[holding.securityKey],
                   case let holdingAssetKey = security.assetKey,
                   holdingAssetKey.isValid
             else { return }
-            
+
             if let targetAssetKey = topRankedTargetMap[holdingAssetKey] {
                 // may be multiple matches, but first should be strongest (includes the holding's assetKey, if it's a target)
                 map.accepted[targetAssetKey, default: []].append(holding)

@@ -10,9 +10,9 @@
 
 import XCTest
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 @testable import FlowAllocHigh
 
@@ -32,7 +32,7 @@ class MTransactionTests: XCTestCase {
     var voo: MSecurity!
     var bnd: MSecurity!
     var agg: MSecurity!
-    
+
     var spyKey: MSecurity.Key!
     var vooKey: MSecurity.Key!
     var bndKey: MSecurity.Key!
@@ -58,7 +58,7 @@ class MTransactionTests: XCTestCase {
         timestamp1 = df.date(from: "2020-10-01T00:00:00Z")!
         timestamp2 = df.date(from: "2020-11-01T00:00:00Z")!
         timestamp3 = df.date(from: "2020-12-01T00:00:00Z")!
-        
+
         bondKey = MAsset.Key(assetID: "Bond")
         lcKey = MAsset.Key(assetID: "LC")
 
@@ -87,7 +87,6 @@ class MTransactionTests: XCTestCase {
         hI = MTransaction(action: .buysell, transactedAt: timestamp1, accountID: "9", securityID: "UNKNOWN", shareCount: -1, sharePrice: 1)
     }
 
-
     override func setUp() {
         securityMap = [
             spyKey: spy,
@@ -108,10 +107,10 @@ class MTransactionTests: XCTestCase {
     func testGetRecentPurchasesMap() throws {
         let actual = MTransaction.getRecentPurchasesMap(recentBuyTxns: transactions)
         let expected = [aggKey: [PurchaseInfo(tickerKey: aggKey, shareCount: 1.0, shareBasis: 1.0),
-                                PurchaseInfo(tickerKey: aggKey, shareCount: 1.0, shareBasis: 1.0)],
+                                 PurchaseInfo(tickerKey: aggKey, shareCount: 1.0, shareBasis: 1.0)],
                         spyKey: [PurchaseInfo(tickerKey: spyKey, shareCount: 1.0, shareBasis: 1.0)],
                         vooKey: [PurchaseInfo(tickerKey: vooKey, shareCount: 1.0, shareBasis: 1.0),
-                                PurchaseInfo(tickerKey: vooKey, shareCount: 1.0, shareBasis: 1.0)]]
+                                 PurchaseInfo(tickerKey: vooKey, shareCount: 1.0, shareBasis: 1.0)]]
         XCTAssertEqual(expected, actual)
     }
 
@@ -119,12 +118,12 @@ class MTransactionTests: XCTestCase {
         let df = ISO8601DateFormatter()
         let since = df.date(from: "2020-05-31T14:00:00Z")! // baseline date
 
-        //let noDate =   MTransaction(action: .buysell, transactedAt: timestamp1, accountID: "1", securityID: "SPY", shareCount: 12, sharePrice: 110)
-        let outside =  MTransaction(action: .buysell, transactedAt: since - 1, accountID: "2", securityID: "SPY", shareCount: 12, sharePrice: 110)
+        // let noDate =   MTransaction(action: .buysell, transactedAt: timestamp1, accountID: "1", securityID: "SPY", shareCount: 12, sharePrice: 110)
+        let outside = MTransaction(action: .buysell, transactedAt: since - 1, accountID: "2", securityID: "SPY", shareCount: 12, sharePrice: 110)
         let atBorder = MTransaction(action: .buysell, transactedAt: since, accountID: "3", securityID: "SPY", shareCount: 12, sharePrice: 110)
-        let inside =   MTransaction(action: .buysell, transactedAt: since + 1, accountID: "4", securityID: "SPY", shareCount: 12, sharePrice: 110)
+        let inside = MTransaction(action: .buysell, transactedAt: since + 1, accountID: "4", securityID: "SPY", shareCount: 12, sharePrice: 110)
 
-        let model = BaseModel(transactions: [outside, atBorder, inside]) //noDate, 
+        let model = BaseModel(transactions: [outside, atBorder, inside]) // noDate,
 
         let expected = [inside, atBorder]
         let actual = model.getRecentTxns(since: since)

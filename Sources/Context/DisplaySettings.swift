@@ -10,9 +10,9 @@
 
 import Foundation
 
+import AllocData
 import FlowAllocLow
 import FlowBase
-import AllocData
 
 public enum MoneySelection: Int, CaseIterable, Codable {
     case percentOfAccount

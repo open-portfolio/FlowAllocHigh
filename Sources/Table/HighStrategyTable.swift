@@ -13,7 +13,6 @@ import Foundation
 import FlowAllocLow
 import FlowBase
 
-
 public struct HighStrategyTable {
     public var rows: [HighRow]
     public var headerCells: [BaseColumnHeader] // TODO: rename to items
@@ -32,7 +31,7 @@ public struct HighStrategyTable {
                               params: BaseParams = BaseParams(),
                               accountAllocMap: AccountAssetValueMap = AccountAssetValueMap()) -> HighStrategyTable
     {
-        //print("HighTable.create accountKeys=\(params.accountKeys)")
+        // print("HighTable.create accountKeys=\(params.accountKeys)")
 
         guard let ax = context else { return HighStrategyTable() }
 
@@ -43,8 +42,8 @@ public struct HighStrategyTable {
         let rows = HighStrategyTable.getRows(ax, params, accountAllocMap)
 
         return HighStrategyTable(rows: rows,
-                                  headerCells: headerCells,
-                                  fixedHeaderCells: fixedHeaderCells)
+                                 headerCells: headerCells,
+                                 fixedHeaderCells: fixedHeaderCells)
     }
 
     private static func getRows(_ ax: HighContext,
@@ -73,12 +72,12 @@ public struct HighStrategyTable {
             }
 
             return HighRow(assetKey: assetKey,
-                            targetPct: variableTargetPct,
-                            allocatedValue: variableValue,
-                            cells: variableItems,
-                            colorCode: colorCode,
-                            netAlloc: netAlloc,
-                            fixedCells: fixedItems)
+                           targetPct: variableTargetPct,
+                           allocatedValue: variableValue,
+                           cells: variableItems,
+                           colorCode: colorCode,
+                           netAlloc: netAlloc,
+                           fixedCells: fixedItems)
         }
     }
 
@@ -145,10 +144,10 @@ public struct HighStrategyTable {
         let holdingsSummary = holdingsSummaryMap[assetKey] ?? HoldingsSummary()
 
         return HighFixedItem(accountKey: accountKey,
-                              alloc: alloc,
-                              holdingsSummary: holdingsSummary,
-                              allocatedValue: allocatedValue,
-                              colorCode: colorCode,
-                              orphanedValue: orphanedValue)
+                             alloc: alloc,
+                             holdingsSummary: holdingsSummary,
+                             allocatedValue: allocatedValue,
+                             colorCode: colorCode,
+                             orphanedValue: orphanedValue)
     }
 }

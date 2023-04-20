@@ -13,7 +13,6 @@ import Foundation
 import FlowAllocLow
 import FlowBase
 
-
 public final class HighFixedItem: BaseItem {
     public var orphanedValue: Double
 
