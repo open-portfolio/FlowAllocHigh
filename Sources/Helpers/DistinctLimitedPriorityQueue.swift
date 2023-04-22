@@ -35,7 +35,7 @@ public struct DistinctLimitedPriorityQueue<T: Hashable & Comparable & Equatable>
 
         let originalCount = pq.count
 
-        if let discard = pq.push(element, maxHeap: maxHeap) {
+        if let discard = pq.push(element, maxCount: maxHeap) {
             // print("\(name) DISCARD: REMOVE=\(discard.hashValue) INSERT=\(element.hashValue) set=\(set.count) pq=\(pq.count)")
             set.remove(discard)
             set.insert(element)

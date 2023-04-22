@@ -18,7 +18,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/openalloc/FlowXCT.git", from: "1.0.0"),
         .package(url: "https://github.com/openalloc/FlowAllocLow.git", from: "1.0.0"),
-        .package(url: "https://github.com/reedes/SwiftPriorityQueue", from: "1.3.5"),
+        .package(url: "https://github.com/open-portfolio/SwiftPriorityQueue.git", from: "1.4.1"),
     ],
     targets: [
         .target(
