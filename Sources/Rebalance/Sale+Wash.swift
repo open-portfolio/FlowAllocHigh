@@ -27,18 +27,17 @@ public extension Sale {
     static func getWashAmount(_ sales: [Sale],
                               recentPurchasesMap: RecentPurchasesMap,
                               securityMap: SecurityMap,
-                              trackerSecuritiesMap: TrackerSecuritiesMap) -> Double
+                              securities _: [MSecurity]) -> Double
+    // trackerSecuritiesMap: TrackerSecuritiesMap) -> Double
     {
         sales.reduce(0) { $0 + $1.getWashAmount(recentPurchasesMap: recentPurchasesMap,
-                                                securityMap: securityMap,
-                                                trackerSecuritiesMap: trackerSecuritiesMap) }
+                                                securityMap: securityMap) }
     }
 
     // Losing sale(s) will have a wash if recent purchases for the securityID (and similar) show an unrealized gain.
     // Note that RecentPurchasesMap should have similar securities (SPY, VOO, etc. following same index) share the same history
     func getWashAmount(recentPurchasesMap: RecentPurchasesMap,
-                       securityMap: SecurityMap,
-                       trackerSecuritiesMap: TrackerSecuritiesMap) -> Double
+                       securityMap: SecurityMap) -> Double
     {
         let netGainLoss_ = netGainLoss
         guard netGainLoss_ < 0 else { return 0 } // only consider losses
@@ -47,20 +46,20 @@ public extension Sale {
             let securityKey = $1.holding.securityKey
             guard securityKey.isValid else { return $0 }
 
-            let securityKeys: [SecurityKey] = {
-                if let security = securityMap[securityKey],
-                   security.trackerKey.isValid,
-                   let trackedSecurities = trackerSecuritiesMap[security.trackerKey],
-                   trackedSecurities.count > 0
-                {
-                    return trackedSecurities.map(\.primaryKey)
-                }
-                return [securityKey]
-            }()
+//            let securityKeys: [SecurityKey] = {
+//                if let security = securityMap[securityKey],
+//                   security.trackerKey.isValid,
+//                   let trackedSecurities = trackerSecuritiesMap[security.trackerKey],
+//                   trackedSecurities.count > 0
+//                {
+//                    return trackedSecurities.map(\.primaryKey)
+//                }
+//                return [securityKey]
+//            }()
 
             // collect all recent purchases of SPY, VOO, etc. to compare to sale of S&P500 ETF
             let recentPurchases: [PurchaseInfo] = recentPurchasesMap.reduce(into: []) {
-                if securityKeys.contains($1.key) {
+                if securityMap.keys.contains($1.key) {
                     return $0.append(contentsOf: $1.value)
                 }
             }

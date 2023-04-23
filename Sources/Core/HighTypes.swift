@@ -37,5 +37,5 @@ public typealias RollupMap = [AssetKey: [AssetKey]] // parent: children
 public typealias HighResultOrderFn = (HighResult, HighResult) -> Bool
 public typealias HighResultQueue = DistinctLimitedPriorityQueue<HighResult>
 public typealias TickerAmountMap = AllocKeyValueMap<MSecurity>
-public typealias TrackerSecuritiesMap = [TrackerKey: [MSecurity]]
+// public typealias TrackerSecuritiesMap = [TrackerKey: [MSecurity]]
 public typealias AssetGroupMap = [AssetKey: [AssetKey]] // parent: children

@@ -8,15 +8,15 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-import Foundation
+// import Foundation
+//
+// import AllocData
+//
+// import FlowAllocLow
+// import FlowBase
 
-import AllocData
-
-import FlowAllocLow
-import FlowBase
-
-public extension BaseModel {
-    var trackerSecuritiesMap: TrackerSecuritiesMap {
-        MTracker.getTrackerSecuritiesMap(securities)
-    }
-}
+// public extension BaseModel {
+//    var trackerSecuritiesMap: TrackerSecuritiesMap {
+//        MTracker.getTrackerSecuritiesMap(securities)
+//    }
+// }

@@ -34,7 +34,7 @@ class SaleWashTests: XCTestCase {
             MSecurity(securityID: "SPY", assetID: "LC", sharePrice: 200.0),
         ]
         let securityMap = MSecurity.makeAllocMap(securities)
-        let trackerSecuritiesMap = MTracker.getTrackerSecuritiesMap(securities)
+//        let trackerSecuritiesMap = MTracker.getTrackerSecuritiesMap(securities)
 
         let recentPurchasesMap = [
             spy: [
@@ -48,8 +48,8 @@ class SaleWashTests: XCTestCase {
         let sale = Sale(assetKey: lc, targetAmount: 100.0, liquidateHoldings: [lh])
         let expected = 6.0 // wash, ((10-2) * 1) - ((10-2) * 0.25) = 8 - 2 = 6
         let actual = sale.getWashAmount(recentPurchasesMap: recentPurchasesMap,
-                                        securityMap: securityMap,
-                                        trackerSecuritiesMap: trackerSecuritiesMap)
+                                        securityMap: securityMap)
+//                                        trackerSecuritiesMap: trackerSecuritiesMap)
         XCTAssertEqual(expected, actual)
     }
 
@@ -61,7 +61,7 @@ class SaleWashTests: XCTestCase {
             MSecurity(securityID: "SPY", assetID: "LC", sharePrice: 200.0, trackerID: tracker.trackerID),
         ]
         let securityMap = MSecurity.makeAllocMap(securities)
-        let trackerSecuritiesMap = MTracker.getTrackerSecuritiesMap(securities)
+//        let trackerSecuritiesMap = MTracker.getTrackerSecuritiesMap(securities)
 
         let recentPurchasesMap = [
             voo: [
@@ -74,8 +74,8 @@ class SaleWashTests: XCTestCase {
         let sale = Sale(assetKey: lc, targetAmount: 1000.0, liquidateHoldings: [lh])
         let expected = 200.0
         let actual = sale.getWashAmount(recentPurchasesMap: recentPurchasesMap,
-                                        securityMap: securityMap,
-                                        trackerSecuritiesMap: trackerSecuritiesMap)
+                                        securityMap: securityMap)
+//                                        trackerSecuritiesMap: trackerSecuritiesMap)
         XCTAssertEqual(expected, actual)
     }
 

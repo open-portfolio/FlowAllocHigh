@@ -475,7 +475,7 @@ public class HighContext: LowContext {
 
     // MARK: - Various maps
 
-    public lazy var trackerSecuritiesMap: TrackerSecuritiesMap = model.trackerSecuritiesMap
+    // public lazy var trackerSecuritiesMap: TrackerSecuritiesMap = model.trackerSecuritiesMap
 
     // MARK: - Transactions
 

@@ -142,7 +142,7 @@ extension HighResult {
             saleWashAmount += Sale.getWashAmount(sales,
                                                  recentPurchasesMap: ax.recentPurchasesMap,
                                                  securityMap: ax.securityMap,
-                                                 trackerSecuritiesMap: ax.trackerSecuritiesMap)
+                                                 securities: ax.model.securities)
         }
 
         return HighResult(accountKeys: ap.accountKeys,

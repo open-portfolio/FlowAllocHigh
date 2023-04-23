@@ -25,8 +25,8 @@ class MTransactionTests: XCTestCase {
     var bondKey: MAsset.Key!
     var lcKey: MAsset.Key!
 
-    var spx: MTracker!
-    var spxKey: MTracker.Key!
+//    var spx: MTracker!
+//    var spxKey: MTracker.Key!
 
     var spy: MSecurity!
     var voo: MSecurity!
@@ -39,7 +39,7 @@ class MTransactionTests: XCTestCase {
     var aggKey: MSecurity.Key!
 
     var securityMap: SecurityMap!
-    var trackerSecuritiesMap: TrackerSecuritiesMap!
+//    var trackerSecuritiesMap: TrackerSecuritiesMap!
 
     var hA: MTransaction!
     var hB: MTransaction!
@@ -62,9 +62,9 @@ class MTransactionTests: XCTestCase {
         bondKey = MAsset.Key(assetID: "Bond")
         lcKey = MAsset.Key(assetID: "LC")
 
-        spx = MTracker(trackerID: "SPX", title: "S&P 500")
-
-        spxKey = spx.primaryKey
+//        spx = MTracker(trackerID: "SPX", title: "S&P 500")
+//
+//        spxKey = spx.primaryKey
 
         spy = MSecurity(securityID: "SPY", assetID: "LC", trackerID: "SPX")
         voo = MSecurity(securityID: "VOO", assetID: "LC", trackerID: "SPX")
@@ -94,7 +94,7 @@ class MTransactionTests: XCTestCase {
             bndKey: bnd,
             aggKey: agg,
         ]
-        trackerSecuritiesMap = [spxKey: [spy, voo]]
+//        trackerSecuritiesMap = [spxKey: [spy, voo]]
         transactions = [hA, hB, hC, hD, hE, hF, hG, hH, hI]
     }
 
