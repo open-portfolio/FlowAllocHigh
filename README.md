@@ -1,6 +1,6 @@
 # FlowAllocHigh
 
-Swift library containing high-level support for the [FlowAllocator](https://open-portfolio.github.io/allocator) app
+Swift library containing high-level support for the [Flow Allocator](https://open-portfolio.github.io/allocator) app
 
 _FlowAllocHigh_ is part of the [OpenAlloc](https://github.com/openalloc) family of open source Swift software tools.
 
